@@ -4,8 +4,11 @@
 apt-get update
 apt-get install -y \
     git \
-    python-pip \
-    python3-pip
+    build-essential \
+    python3-dev \
+    python3-pip \
+    python-dev \
+    python-pip
 pip3 install --upgrade \
     pip \
     setuptools
