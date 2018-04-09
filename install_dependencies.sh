@@ -6,7 +6,7 @@ grep -q -F 'net.ipv6.conf.default.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf
 grep -q -F 'net.ipv6.conf.lo.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || echo 'net.ipv6.conf.lo.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
 sysctl -p
 
-## Install Dependencies related for Cloudbox Ansible commands.
+## Install Dependencies relate to Cloudbox.
 apt-get update
 apt-get install -y \
     git \
