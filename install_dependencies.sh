@@ -1,5 +1,11 @@
 #!/bin/sh
 
+## Disable ipv6
+grep -q -F 'net.ipv6.conf.all.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
+grep -q -F 'net.ipv6.conf.default.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || echo 'net.ipv6.conf.default.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
+grep -q -F 'net.ipv6.conf.lo.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || echo 'net.ipv6.conf.lo.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
+sysctl -p
+
 ## Install Dependencies related for Cloudbox Ansible commands.
 apt-get update
 apt-get install -y \
@@ -9,16 +15,16 @@ apt-get install -y \
     python3-pip \
     python-dev \
     python-pip
-pip3 install --upgrade \
+python3 -m pip install --upgrade \
     pip \
     setuptools
-/usr/bin/pip install --upgrade \
+python -m pip install --upgrade \
     pip \
     setuptools
-pip3 install \
+python3 -m pip install \
     request \
     pyOpenSSL
-pip install \
+python -m pip install \
     ansible==2.3.1.0 \
     pyOpenSSL \
     requests
