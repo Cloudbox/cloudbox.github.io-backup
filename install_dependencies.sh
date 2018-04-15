@@ -25,6 +25,6 @@ python3 -m pip install \
     request \
     pyOpenSSL
 python -m pip install \
-    ansible==2.3.1.0 \
+    ansible==2.5 \
     pyOpenSSL \
     requests
