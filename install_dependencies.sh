@@ -22,7 +22,7 @@ python -m pip install --upgrade \
     pip \
     setuptools
 python3 -m pip install \
-    request \
+    requests \
     pyOpenSSL
 python -m pip install \
     ansible==2.5 \
