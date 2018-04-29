@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Optional Param
+ANSIBLE_VERSION ${1:-2.5}
+
 ## Disable IPv6
 grep -q -F 'net.ipv6.conf.all.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
 grep -q -F 'net.ipv6.conf.default.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || echo 'net.ipv6.conf.default.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
@@ -26,5 +29,5 @@ python -m pip install --upgrade \
     pyOpenSSL \
     pip \
     setuptools \
-    ansible==2.5 \
+    ansible==${ANSIBLE_VERSION} \
     requests
