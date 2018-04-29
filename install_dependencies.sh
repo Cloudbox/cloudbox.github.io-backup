@@ -16,15 +16,13 @@ apt-get install -y \
     python-dev \
     python-pip
 python3 -m pip install --upgrade \
-    pip \
-    setuptools
-python -m pip install --upgrade \
-    pip \
-    setuptools
-python3 -m pip install \
-    requests \
-    pyOpenSSL
-python -m pip install \
-    ansible==2.5 \
     pyOpenSSL \
+    pip \
+    setuptools \
+    requests
+python -m pip install --upgrade \
+    pyOpenSSL \
+    pip \
+    setuptools \
+    ansible==2.5 \
     requests
