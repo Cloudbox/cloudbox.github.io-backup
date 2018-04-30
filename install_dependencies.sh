@@ -16,15 +16,18 @@ apt-get install -y \
     python3-dev \
     python3-pip \
     python-dev \
-    python-pip
+    python-pip \
+    python-netaddr
 python3 -m pip install --upgrade \
     pyOpenSSL \
     pip \
     setuptools \
-    requests
+    requests \
+    netaddr
 python -m pip install --upgrade \
     pyOpenSSL \
     pip \
     setuptools \
     ansible==${1-2.5} \
-    requests
+    requests \
+    netaddr
