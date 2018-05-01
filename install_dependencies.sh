@@ -17,7 +17,6 @@ apt-get install -y \
     python3-pip \
     python-dev \
     python-pip \
-    python-netaddr
 python3 -m pip install --upgrade \
     pyOpenSSL \
     pip \
