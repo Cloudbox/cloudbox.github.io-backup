@@ -16,7 +16,7 @@ apt-get install -y \
     python3-dev \
     python3-pip \
     python-dev \
-    python-pip \
+    python-pip
 python3 -m pip install --upgrade \
     pyOpenSSL \
     pip \
