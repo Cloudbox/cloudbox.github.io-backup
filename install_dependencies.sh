@@ -8,7 +8,7 @@ sysctl -p
 
 ## Install Dependencies
 apt-get update
-apt-get install -y \
+apt-get install -y --reinstall \
     git \
     build-essential \
     libssl-dev \
@@ -17,15 +17,15 @@ apt-get install -y \
     python3-pip \
     python-dev \
     python-pip
-python3 -m pip install --upgrade \
+python3 -m pip install --upgrade --force-reinstall \
     pyOpenSSL \
-    pip \
+    pip==9.0.3 \
     setuptools \
     requests \
     netaddr
-python -m pip install --upgrade \
+python -m pip install --upgrade --force-reinstall \
     pyOpenSSL \
-    pip \
+    pip==9.0.3 \
     setuptools \
     ansible==${1-2.5} \
     requests \
