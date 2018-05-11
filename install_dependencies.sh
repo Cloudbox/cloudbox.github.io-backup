@@ -50,3 +50,7 @@ python -m pip install --upgrade --force-reinstall \
     ansible==${1-2.5} \
     requests \
     netaddr
+
+## Copy pip to /usr/bin
+cp /usr/local/bin/pip /usr/bin/pip
+cp /usr/local/bin/pip3 /usr/bin/pip3
