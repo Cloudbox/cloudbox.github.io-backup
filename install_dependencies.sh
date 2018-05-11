@@ -1,4 +1,24 @@
 #!/bin/sh
+#################################################################################
+# Title:         Install Dependencies Script                                    #
+# Author:        Cloudbox Team                                                  #
+# URL:           https://github.com/Cloudbox/Cloudbox                           #
+# Description:   Installs dependencies needed for Cloudbox.                     #
+# --                                                                            #
+# Part of the Cloudbox project: https://cloudbox.rocks                          #
+#################################################################################
+# GNU General Public License v3.0                                               #
+#################################################################################
+# Usage:                                                                        #
+# ======                                                                        #
+# Ansible 2.5:                                                                  #
+# curl -s https://cloudbox.rocks/install_dependencies.sh | sudo sh              #
+# wget -qO- https://cloudbox.rocks/install_dependencies.sh | sudo sh            #
+#                                                                               #
+# Ansible 2.3.1:                                                                #
+# curl -s https://cloudbox.rocks/install_dependencies.sh | sudo sh -s 2.3.1     #
+# wget -qO- https://cloudbox.rocks/install_dependencies.sh | sudo sh -s 2.3.1   #
+#################################################################################
 
 ## Disable IPv6
 grep -q -F 'net.ipv6.conf.all.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
