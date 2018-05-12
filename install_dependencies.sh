@@ -39,13 +39,13 @@ apt-get install -y --reinstall \
     python-pip
 python3 -m pip install --upgrade --force-reinstall \
     pyOpenSSL \
-    pip==9.0.3 \
+    pip \
     setuptools \
     requests \
     netaddr
 python -m pip install --upgrade --force-reinstall \
     pyOpenSSL \
-    pip==9.0.3 \
+    pip \
     setuptools \
     ansible==${1-2.5.2} \
     requests \
