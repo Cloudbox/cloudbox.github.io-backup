@@ -1,23 +1,23 @@
 #!/bin/sh
 #################################################################################
 # Title:         Install Dependencies Script                                    #
-# Author:        Cloudbox Team                                                  #
+# Author(s):     l3uddz, desimaniac                                             #
 # URL:           https://github.com/Cloudbox/Cloudbox                           #
 # Description:   Installs dependencies needed for Cloudbox.                     #
 # --                                                                            #
-# Part of the Cloudbox project: https://cloudbox.rocks                          #
+#             Part of the Cloudbox project: https://cloudbox.rocks              #
 #################################################################################
-# GNU General Public License v3.0                                               #
+#                     GNU General Public License v3.0                           #
 #################################################################################
 # Usage:                                                                        #
 # ======                                                                        #
-# Ansible 2.5.2:                                                                #
+# Ansible version 2.5.3:                                                        #
 # curl -s https://cloudbox.rocks/install_dependencies.sh | sudo sh              #
 # wget -qO- https://cloudbox.rocks/install_dependencies.sh | sudo sh            #
 #                                                                               #
-# Ansible 2.3.1:                                                                #
-# curl -s https://cloudbox.rocks/install_dependencies.sh | sudo sh -s 2.3.1     #
-# wget -qO- https://cloudbox.rocks/install_dependencies.sh | sudo sh -s 2.3.1   #
+# Ansible version specified:                                                    #
+# curl -s https://cloudbox.rocks/install_dependencies.sh | sudo sh -s 2.4.0     #
+# wget -qO- https://cloudbox.rocks/install_dependencies.sh | sudo sh -s 2.4.0   #
 #################################################################################
 
 ## Disable IPv6
@@ -47,7 +47,7 @@ python -m pip install --upgrade --force-reinstall \
     pyOpenSSL \
     pip \
     setuptools \
-    ansible==${1-2.5.2} \
+    ansible==${1-2.5.3} \
     requests \
     netaddr
 
