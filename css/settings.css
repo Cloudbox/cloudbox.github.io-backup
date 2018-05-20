@@ -3785,7 +3785,10 @@ img {
 	h1 {
 		font-size: 2.0571429rem;
 		margin-bottom: .21999rem;
-		padding-top: .78001rem
+		padding-top: .78001rem;
+    font-weight: 400;
+    font-family: "Ubuntu Mono", Monaco;
+    color: #373D49;
 	}
 	h2 {
 		font-size: 1.953125rem;
