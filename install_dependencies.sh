@@ -11,7 +11,7 @@
 #################################################################################
 # Usage:                                                                        #
 # ======                                                                        #
-# Ansible version 2.5.0:                                                        #
+# Ansible version 2.5.3:                                                        #
 # curl -s https://cloudbox.rocks/install_dependencies.sh | sudo sh              #
 # wget -qO- https://cloudbox.rocks/install_dependencies.sh | sudo sh            #
 #                                                                               #
@@ -47,7 +47,7 @@ python -m pip install --upgrade --force-reinstall \
     pyOpenSSL \
     pip \
     setuptools \
-    ansible==${1-2.5.0} \
+    ansible==${1-2.5.3} \
     requests \
     netaddr
 
