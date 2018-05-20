@@ -145,6 +145,7 @@ table th[class*="col-"] {
 	position: static;
 	float: none;
 	display: table-cell
+
 }
 
 .table>thead>tr>td.active,
