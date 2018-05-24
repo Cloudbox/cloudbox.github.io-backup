@@ -41,8 +41,8 @@ which python3
 which python
 which pip3
 which pip
-pip3 install --upgrade --force-reinstall pip
-#pip3 install --upgrade --force-reinstall pip==9.0.3
+#pip3 install --upgrade --force-reinstall pip
+pip3 install --upgrade --force-reinstall pip==9.0.3
 pip3 install --upgrade --force-reinstall setuptools     
 pip3 install --upgrade --force-reinstall \
     pyOpenSSL \
@@ -52,14 +52,16 @@ which python3
 which python
 which pip3
 which pip
-pip install --upgrade --force-reinstall pip
-#pip install --upgrade --force-reinstall pip==9.0.3 
+#pip install --upgrade --force-reinstall pip
+pip install --upgrade --force-reinstall pip==9.0.3 
 pip install --upgrade --force-reinstall setuptools 
 pip install --upgrade --force-reinstall \
     pyOpenSSL \
     requests \
-    netaddr
-pip install --upgrade ansible==${1-2.5.1}
+    netaddr \
+    ansible==${1-2.5.1}
+
+#pip install --upgrade ansible==${1-2.5.1}
 
 ## Copy pip to /usr/bin
 cp /usr/local/bin/pip /usr/bin/pip
