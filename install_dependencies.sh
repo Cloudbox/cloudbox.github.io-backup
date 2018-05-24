@@ -37,20 +37,16 @@ apt-get install -y --reinstall \
     python3-pip \
     python-dev \
     python-pip
-python3 -m pip install --upgrade --force-reinstall \
+pip3 install --upgrade --force-reinstall pip==9.0.3
+pip3 install --upgrade --force-reinstall setuptools     
+pip3 install --upgrade --force-reinstall \
     pyOpenSSL \
-    pip \
-    setuptools \
     requests \
     netaddr
-python -m pip install --upgrade --force-reinstall \
+pip install --upgrade --force-reinstall pip==9.0.3 
+pip install --upgrade --force-reinstall setuptools 
+pip install --upgrade --force-reinstall \
     pyOpenSSL \
-    pip \
-    setuptools \
-    ansible==${1-2.5.1} \
     requests \
-    netaddr
-
-## Copy pip to /usr/bin
-cp /usr/local/bin/pip /usr/bin/pip
-cp /usr/local/bin/pip3 /usr/bin/pip3
+    netaddr \
+    ansible==${1-2.5.1}
