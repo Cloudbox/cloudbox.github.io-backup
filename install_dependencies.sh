@@ -1,7 +1,7 @@
 #!/bin/sh
 #################################################################################
 # Title:         Install Dependencies Script                                    #
-# Author(s):     l3uddz, desimaniac                                             #
+# Author(s):     l3uddz, desimaniac, enormoz                                    #
 # URL:           https://github.com/Cloudbox/Cloudbox                           #
 # Description:   Installs dependencies needed for Cloudbox.                     #
 # --                                                                            #
