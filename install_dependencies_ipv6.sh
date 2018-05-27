@@ -1,6 +1,6 @@
 #!/bin/sh
 #################################################################################
-# Title:         Cloudbox: Dependency Installer Script                          #
+# Title:         Cloudbox: Dependency Installer Script (IPv6)                   #
 # Author(s):     L3uddz, Desimaniac, EnorMOZ                                    #
 # URL:           https://github.com/Cloudbox/Cloudbox                           #
 # Description:   Installs dependencies needed for Cloudbox.                     #
@@ -19,12 +19,6 @@
 # curl -s https://cloudbox.rocks/install_dependencies.sh | sudo sh -s 2.4.0     #
 # wget -qO- https://cloudbox.rocks/install_dependencies.sh | sudo sh -s 2.4.0   #
 #################################################################################
-
-## Disable IPv6
-grep -q -F 'net.ipv6.conf.all.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
-grep -q -F 'net.ipv6.conf.default.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || echo 'net.ipv6.conf.default.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
-grep -q -F 'net.ipv6.conf.lo.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || echo 'net.ipv6.conf.lo.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
-sysctl -p
 
 ## Install Dependencies
 apt-get update
