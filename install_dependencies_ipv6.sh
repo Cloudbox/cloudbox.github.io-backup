@@ -31,15 +31,15 @@ apt-get install -y --reinstall \
     python3-pip \
     python-dev \
     python-pip
-python3 -m pip install --upgrade --force-reinstall pip==9.0.3
-python3 -m pip install --upgrade --force-reinstall setuptools
-python3 -m pip install --upgrade --force-reinstall \
+python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall pip==9.0.3
+python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall setuptools
+python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
     pyOpenSSL \
     requests \
     netaddr
-python -m pip install --upgrade --force-reinstall pip==9.0.3
-python -m pip install --upgrade --force-reinstall setuptools
-python -m pip install --upgrade --force-reinstall \
+python -m pip install --disable-pip-version-check --upgrade --force-reinstall pip==9.0.3
+python -m pip install --disable-pip-version-check --upgrade --force-reinstall setuptools
+python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
     pyOpenSSL \
     requests \
     netaddr \
