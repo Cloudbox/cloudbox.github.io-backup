@@ -65,7 +65,18 @@
 				<td></td>
 				<td>This will be used to 1) Register the Let's Encrypt SSL certificates, and 2) Receive certificate expiration notices.<br>
 				<br>
-				This will also be used for Cloudflare authentication (i.e. must match the e-mail address you in your Cloudflare account profile).</td>
+				This will also be used for <a href="https://github.com/Cloudbox/Cloudbox/wiki/Prerequisites%3A-Cloudflare">Cloudflare authentication</a> (i.e. this must match the e-mail address you in your Cloudflare account profile).</td>
+			</tr>
+			<tr>
+				<td><code>cloudflare_api_token</code></td>
+				<td></td>
+				<td><a href="https://github.com/Cloudbox/Cloudbox/wiki/Prerequisites%3A-Cloudflare">Cloudflare API Token</a>.</td>
+				<td>no</td>
+				<td></td>
+				<td></td>
+				<td>Fill this in to have Cloudbox add subdomains on Cloudflare, automatically; leave it blank, to have all Cloudflare related functions disabled.
+				<br><br>
+				Note: CDN/Proxy will not be turned on by default. However, you may turn them on later (see <a href="https://github.com/Cloudbox/Cloudbox/wiki/Prerequisites%3A-Cloudflare#post-setup">here</a>).</td>
 			</tr>
 			<tr>
 				<td><code>nzbget</code></td>
