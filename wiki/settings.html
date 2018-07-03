@@ -134,7 +134,8 @@
 				<td><code>public</code></td>
 				<td>
 				For list of version tags, see <a href="https://hub.docker.com/r/plexinc/pms-docker/tags/">here</a>.
-				<br><br>Use <code>beta</code> only if you have an active <a href="https://www.plex.tv/features/plex-pass/">Plex Pass</a>.
+				<br><br>The <code>beta</code> tag (formerly <code>plexpass</code>) requires an active <a href="https://www.plex.tv/features/plex-pass/">Plex Pass</a> account.
+				<br><br>Hardware Transcoding requires an active <a href="https://www.plex.tv/features/plex-pass/">Plex Pass</a> account.
 				<br><br> If you decide to change the tags later, you will need to update Plex by running the Cloudbox install command with the "plex" tag (i.e. <code>sudo ansible-playbook cloudbox.yml --tags plex</code>).
 				</td>
 			</tr>
@@ -146,8 +147,10 @@
 				<td></td>
 				<td><code>/home/{{user}}/transcodes</code></td>
 				<td>
-					Note: It is recommended to <strong>not</strong> use <code>/tmp</code> or <code>/dev/shm</code> as a transcode location because the paths are cleared on reboots, causing Docker to create the folder as root and Plex transcoder to crash.
-					Another reason why not to: <a href="https://forums.plex.tv/discussion/comment/1502936/#Comment_1502936">https://forums.plex.tv/discussion/comment/1502936/#Comment_1502936</a>.
+				Note 1: It is recommended to <strong>not</strong> use <code>/tmp</code> or <code>/dev/shm</code> as a transcode location because the paths are cleared on reboots, causing Docker to create the folder as root and Plex transcoder to crash.
+				Another reason why not to: <a href="https://forums.plex.tv/discussion/comment/1502936/#Comment_1502936">https://forums.plex.tv/discussion/comment/1502936/#Comment_1502936</a>.
+				<br><br>
+				Note 2: Having <code>{{user}}</code> in the path tells Ansible to fill in the username automatically. You do not need to fill in your actual username.
 				</td>
 			</tr>
 			<tr>
@@ -186,7 +189,10 @@
 				<td><code>/home/{{user}}/Backups</code></td>
 				<td>Only the the most recent backup is kept.<br>
 				<br>
-				Note: Ensure the path does NOT have a trailing slash (<code>/</code>) or else backup will fail (i.e. <code>/sample/path</code>, but not <code>/sample/path/</code>).</td>
+				Note 1: Ensure the path does NOT have a trailing slash (<code>/</code>) or else backup will fail (i.e. <code>/sample/path</code>, but not <code>/sample/path/</code>).
+				<br><br>
+				Note 2: Having <code>{{user}}</code> in the path tells Ansible to fill in the username automatically. You do not need to fill in your actual username.
+			</td>
 			</tr>
 			<tr>
 				<td></td>
@@ -197,7 +203,10 @@
 				<td></td>
 				<td>Only the the most recent backup is kept.<br>
 				<br>
-				Note: Ensure the path does NOT have a trailing slash (<code>/</code>) or else backup will fail (i.e. <code>/sample/path</code>, but not <code>/sample/path/</code>).</td>
+				Note 1: Ensure the path does NOT have a trailing slash (<code>/</code>) or else backup will fail (i.e. <code>/sample/path</code>, but not <code>/sample/path/</code>).
+				<br><br>
+				Note 2: Having <code>{{user}}</code> in the path tells Ansible to fill in the username automatically. You do not need to fill in your actual username.
+			</td>
 			</tr>
 			<tr>
 				<td></td>
