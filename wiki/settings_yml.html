@@ -26,59 +26,6 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td><code>user</code></td>
-				<td></td>
-				<td>User account for the server.</td>
-				<td>yes</td>
-				<td></td>
-				<td><code>seed</code></td>
-				<td>If the user account does not already exist, it will be created during install.</td>
-			</tr>
-			<tr>
-				<td><code>passwd</code></td>
-				<td></td>
-				<td>Password for the user account.</td>
-				<td>yes</td>
-				<td></td>
-				<td></td>
-				<td>Note 1: Password <strong>must</strong> be in alphanumeric characters. No special characters are allowed.<br>
-				<br>
-				Note 2: This password is also used for NZBGet, ruTorrent, and NZBHydra2.</td>
-			</tr>
-			<tr>
-				<td><code>domain</code></td>
-				<td></td>
-				<td>Domain name for the Cloudbox server.</td>
-				<td>yes</td>
-				<td></td>
-				<td></td>
-				<td>
-					If you don’t have one, see <a href="https://github.com/Cloudbox/Cloudbox/wiki/Prerequisites%3A-Domain-Name">here</a>.
-				</td>
-			</tr>
-			<tr>
-				<td><code>email</code></td>
-				<td></td>
-				<td>E-mail address.</td>
-				<td>yes</td>
-				<td></td>
-				<td></td>
-				<td>This will be used to 1) Register the Let's Encrypt SSL certificates, and 2) Receive certificate expiration notices.<br>
-				<br>
-				This will also be used for <a href="https://github.com/Cloudbox/Cloudbox/wiki/Prerequisites%3A-Cloudflare">Cloudflare authentication</a> (i.e. this must match the e-mail address used in the Cloudflare account profile).</td>
-			</tr>
-			<tr>
-				<td><code>cloudflare_api_token</code></td>
-				<td></td>
-				<td><a href="https://github.com/Cloudbox/Cloudbox/wiki/Prerequisites%3A-Cloudflare">Cloudflare API Token</a>.</td>
-				<td>no</td>
-				<td></td>
-				<td></td>
-				<td>Fill this in to have Cloudbox add subdomains on Cloudflare, automatically; leave it blank, to have all Cloudflare related functions disabled.
-				<br><br>
-				Note: CDN (i.e. proxy) will not be turned on, by default, but you may turn them on later (see <a href="https://github.com/Cloudbox/Cloudbox/wiki/Prerequisites%3A-Cloudflare#post-setup">here</a>).</td>
-			</tr>
-			<tr>
 				<td><code>nzbget</code></td>
 				<td></td>
 				<td></td>
