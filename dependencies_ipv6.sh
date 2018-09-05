@@ -20,6 +20,12 @@
 # wget -qO- https://cloudbox.rocks/dependencies_ipv6.sh | sudo sh -s 2.5.1      #
 #################################################################################
 
+## Remove IPv6 entries from systctl
+sed -i -e '/^net.ipv6.conf.all.disable_ipv6/d' /etc/sysctl.conf
+sed -i -e '/^net.ipv6.conf.default.disable_ipv6/d' /etc/sysctl.conf
+sed -i -e '/^net.ipv6.conf.lo.disable_ipv6/d' /etc/sysctl.conf
+sysctl -p
+
 ## Install Dependencies
 apt-get update
 apt-get install -y --reinstall \
