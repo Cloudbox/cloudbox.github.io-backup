@@ -1,6 +1,6 @@
 #!/bin/sh
 #################################################################################
-# Title:         Cloudbox: Dependency Installer Script                          #
+# Title:         Cloudbox: Dependencies Installer                               #
 # Author(s):     L3uddz, Desimaniac, EnorMOZ                                    #
 # URL:           https://github.com/Cloudbox/Cloudbox                           #
 # Description:   Installs dependencies needed for Cloudbox.                     #
@@ -12,12 +12,12 @@
 # Usage:                                                                        #
 # ======                                                                        #
 # Ansible version 2.5.8:                                                        #
-# curl -s https://cloudbox.rocks/install_dependencies.sh | sudo sh              #
-# wget -qO- https://cloudbox.rocks/install_dependencies.sh | sudo sh            #
+# curl -s https://cloudbox.rocks/dependencies.sh | sudo sh                      #
+# wget -qO- https://cloudbox.rocks/dependencies.sh | sudo sh                    #
 #                                                                               #
 # Ansible version specified:                                                    #
-# curl -s https://cloudbox.rocks/install_dependencies.sh | sudo sh -s 2.4.0     #
-# wget -qO- https://cloudbox.rocks/install_dependencies.sh | sudo sh -s 2.4.0   #
+# curl -s https://cloudbox.rocks/dependencies.sh | sudo sh -s 2.5.1             #
+# wget -qO- https://cloudbox.rocks/dependencies.sh | sudo sh -s 2.5.1           #
 #################################################################################
 
 ## Disable IPv6

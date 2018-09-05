@@ -1,6 +1,6 @@
 #!/bin/sh
 #################################################################################
-# Title:         Cloudbox: Dependency Installer Script (IPv6)                   #
+# Title:         Cloudbox: Dependencies Installer (IPv6)                        #
 # Author(s):     L3uddz, Desimaniac, EnorMOZ                                    #
 # URL:           https://github.com/Cloudbox/Cloudbox                           #
 # Description:   Installs dependencies needed for Cloudbox.                     #
@@ -11,13 +11,13 @@
 #################################################################################
 # Usage:                                                                        #
 # ======                                                                        #
-# Ansible version 2.5.1:                                                        #
-# curl -s https://cloudbox.rocks/install_dependencies.sh | sudo sh              #
-# wget -qO- https://cloudbox.rocks/install_dependencies.sh | sudo sh            #
+# Ansible version 2.5.8:                                                        #
+# curl -s https://cloudbox.rocks/dependencies_ipv6.sh | sudo sh                 #
+# wget -qO- https://cloudbox.rocks/dependencies_ipv6.sh | sudo sh               #
 #                                                                               #
 # Ansible version specified:                                                    #
-# curl -s https://cloudbox.rocks/install_dependencies.sh | sudo sh -s 2.4.0     #
-# wget -qO- https://cloudbox.rocks/install_dependencies.sh | sudo sh -s 2.4.0   #
+# curl -s https://cloudbox.rocks/dependencies_ipv6.sh | sudo sh -s 2.5.1        #
+# wget -qO- https://cloudbox.rocks/dependencies_ipv6.sh | sudo sh -s 2.5.1      #
 #################################################################################
 
 ## Install Dependencies
@@ -43,7 +43,7 @@ python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
     pyOpenSSL \
     requests \
     netaddr \
-    ansible==${1-2.5.1}
+    ansible==${1-2.5.8}
 
 ## Copy pip to /usr/bin
 cp /usr/local/bin/pip /usr/bin/pip
