@@ -11,8 +11,8 @@
 #################################################################################
 # Usage:                                                                        #
 # ======                                                                        #
-# curl -s https://cloudbox.rocks/clone.sh | bash                                #
-# wget -qO- https://cloudbox.rocks/clone.sh | bash                              #
+# curl -s https://cloudbox.rocks/repo.sh | bash                                 #
+# wget -qO- https://cloudbox.rocks/repo.sh | bash                               #
 #################################################################################
 
 

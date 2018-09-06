@@ -12,12 +12,12 @@
 # Usage:                                                                        #
 # ======                                                                        #
 # Ansible version 2.5.8:                                                        #
-# curl -s https://cloudbox.rocks/dependencies_pip10.sh | sudo sh                #
-# wget -qO- https://cloudbox.rocks/dependencies_pip10.sh | sudo sh              #
+# curl -s https://cloudbox.rocks/dep_pip10.sh | sudo sh                         #
+# wget -qO- https://cloudbox.rocks/dep_pip10.sh | sudo sh                       #
 #                                                                               #
 # Ansible version specified:                                                    #
-# curl -s https://cloudbox.rocks/dependencies_pip10.sh | sudo sh -s 2.5.1       #
-# wget -qO- https://cloudbox.rocks/dependencies_pip10.sh | sudo sh -s 2.5.1     #
+# curl -s https://cloudbox.rocks/dep_pip10.sh | sudo sh -s 2.5.1                #
+# wget -qO- https://cloudbox.rocks/dep_pip10.sh | sudo sh -s 2.5.1              #
 #################################################################################
 
 ## Disable IPv6
