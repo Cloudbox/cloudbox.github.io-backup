@@ -45,7 +45,7 @@ else
     git submodule update
 fi
 
-## Copy initial config files
+## Copy settings and config files into Cloudbox folder
 shopt -s nullglob
 for i in "$CLOUDBOX_PATH"/defaults/*.default; do
     if [ ! -f "$CLOUDBOX_PATH/$(basename "${i%.*}")" ]; then
