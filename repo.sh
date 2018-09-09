@@ -26,6 +26,7 @@ if [ -d "$CLOUDBOX_PATH" ]; then
         cd "$CLOUDBOX_PATH"
         git fetch
         git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
+        git clean -df
         git submodule init
         git submodule update
     else
@@ -35,6 +36,7 @@ if [ -d "$CLOUDBOX_PATH" ]; then
         git fetch
         git branch master origin/master
         git checkout -f master
+        git clean -df
         git submodule init
         git submodule update
     fi
