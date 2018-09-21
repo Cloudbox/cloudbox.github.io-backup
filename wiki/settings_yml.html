@@ -198,7 +198,7 @@
 				<br>
 				Note 1: It is not recommended to schedule backups hourly as backing up may take a long time and cause future backup attempts to fail (the backup will not occur while another one is in progress, thanks to backup.lock file being created/removed during this process).<br>
 				<br>
-				Note 2: This option just allows the script to schedule the backup for you. You can manually schedule cron to run backups with <code>ansible-playbook cloudbox.yml --tags backup</code> called as root.</td>
+				Note 2: This option just allows the script to schedule the backup for you. You can manually schedule cron to run backups with <code>ansible-playbook cloudbox.yml --tags backup</code> called with sudo.</td>
 			</tr>
 			<tr>
 				<td></td>
@@ -214,7 +214,7 @@
 				<br>
 				<code>present</code> will ensure it is always scheduled.<br>
 				<br>
-				Note: When this option changed (e.g. <code>absent</code> to <code>present</code>; <code>present</code> to <code>absent</code>), a manual backup must be run once in order to set the backup schedule (i.e. <code>sudo ansible-playbook cloudbox.yml --tags backup</code>). <br>
+				Note: When this option changed (e.g. <code>absent</code> to <code>present</code>; <code>present</code> to <code>absent</code>), a set-backup tag must be ran to setup the backup schedule (i.e. <code>sudo ansible-playbook cloudbox.yml --tags set-backup</code>). <br>
 				<br>
 				This option just allows Cloudbox to schedule the backup for you. You can also setup scheduled backups by creating root cron tasks.</td>
 			</tr>
