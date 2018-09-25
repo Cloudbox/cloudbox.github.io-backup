@@ -5,19 +5,19 @@
 # URL:           https://github.com/Cloudbox/Cloudbox                           #
 # Description:   Installs dependencies needed for Cloudbox.                     #
 # --                                                                            #
-#             Part of the Cloudbox project: https://cloudbox.rocks              #
+#             Part of the Cloudbox project: https://cloudbox.works              #
 #################################################################################
 #                     GNU General Public License v3.0                           #
 #################################################################################
 # Usage:                                                                        #
 # ======                                                                        #
 # Ansible version 2.5.8:                                                        #
-# curl -s https://cloudbox.rocks/dep.sh | sudo sh                               #
-# wget -qO- https://cloudbox.rocks/dep.sh | sudo sh                             #
+# curl -s https://cloudbox.works/dep.sh | sudo sh                               #
+# wget -qO- https://cloudbox.works/dep.sh | sudo sh                             #
 #                                                                               #
 # Ansible version specified:                                                    #
-# curl -s https://cloudbox.rocks/dep.sh | sudo sh -s 2.5.1                      #
-# wget -qO- https://cloudbox.rocks/dep.sh | sudo sh -s 2.5.1                    #
+# curl -s https://cloudbox.works/dep.sh | sudo sh -s 2.5.1                      #
+# wget -qO- https://cloudbox.works/dep.sh | sudo sh -s 2.5.1                    #
 #################################################################################
 
 ## Disable IPv6

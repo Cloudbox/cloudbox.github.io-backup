@@ -5,14 +5,14 @@
 # URL:           https://github.com/Cloudbox/Cloudbox                           #
 # Description:   Clones Cloudbox repo.                                          #
 # --                                                                            #
-#             Part of the Cloudbox project: https://cloudbox.rocks              #
+#             Part of the Cloudbox project: https://cloudbox.works              #
 #################################################################################
 #                     GNU General Public License v3.0                           #
 #################################################################################
 # Usage:                                                                        #
 # ======                                                                        #
-# curl -s https://cloudbox.rocks/repo.sh | bash                                 #
-# wget -qO- https://cloudbox.rocks/repo.sh | bash                               #
+# curl -s https://cloudbox.works/repo.sh | bash                                 #
+# wget -qO- https://cloudbox.works/repo.sh | bash                               #
 #################################################################################
 
 

@@ -1,6 +1,6 @@
 # What is Cloudbox?
 
-- [Cloudbox](https://cloudbox.rocks) is an [Ansible](https://www.ansible.com/how-ansible-works) and [docker](https://www.docker.com/what-container) based solution for rapidly deploying a cloud media server on any x64 Ubuntu Server.  
+- [Cloudbox](https://cloudbox.works) is an [Ansible](https://www.ansible.com/how-ansible-works) and [docker](https://www.docker.com/what-container) based solution for rapidly deploying a cloud media server on any x64 Ubuntu Server.  
 
 - Primary functions are: the automatic acquisition of media, storing that media on the cloud, and the ability to play your media from anywhere.
 
