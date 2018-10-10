@@ -81,8 +81,8 @@
 				<td><code>public</code></td>
 				<td>
 				For list of version tags, see <a href="https://hub.docker.com/r/plexinc/pms-docker/tags/">here</a>.
-				<br><br>The <code>beta</code> tag (formerly <code>plexpass</code>) requires an active <a href="https://www.plex.tv/features/plex-pass/">Plex Pass</a> account.
-				<br><br>Hardware Transcoding requires an active <a href="https://www.plex.tv/features/plex-pass/">Plex Pass</a> account.
+				<br><br>The <code>public</code> tag restricts this check to public versions only, where as, <code>beta</code> tag will fetch beta versions. If the server is not logged in or you do not have an active <a href="https://www.plex.tv/features/plex-pass/">Plex Pass</a> on your Plex account, the <code>beta</code> tag will only install the publicly available versions only.
+				<br><br>Hardware Transcoding will also require an active <a href="https://www.plex.tv/features/plex-pass/">Plex Pass</a> account, this can be enabled on either <code>public</code> or <code>beta</code> versions.
 				<br><br>If you decide to change the tags later, you will need to update Plex by running the Cloudbox install command with the "plex" tag (i.e. <code>sudo ansible-playbook cloudbox.yml --tags plex</code>).
 				</td>
 			</tr>
