@@ -54,3 +54,20 @@ for i in "$CLOUDBOX_PATH"/defaults/*.default; do
         cp -n "${i}" "$CLOUDBOX_PATH/$(basename "${i%.*}")"
     fi
 done
+
+## Set nano as default editor
+export EDITOR=nano
+if [[ "$SHELL" == *"bash"* ]]; then
+    if [ -f $HOME/.bashrc ]; then
+        sed -i '/^[ \t]*export EDITOR=/{h;s/=.*/=nano/};${x;/^$/{s//export EDITOR=nano/;H};x}' $HOME/.bashrc
+    elif [ -f /etc/skel/.bashrc ]; then
+        cp /etc/skel/.bashrc $HOME/.bashrc
+        chown $USERNAME:$USERNAME $HOME/.bashrc
+        chmod 644 $HOME/.bashrc
+        sed -i '/^[ \t]*export EDITOR=/{h;s/=.*/=nano/};${x;/^$/{s//export EDITOR=nano/;H};x}' $HOME/.bashrc
+    fi
+elif [[ "$SHELL" == *"zsh"* ]]; then
+    if [ -f $HOME/.zshrc ]; then
+        sed -i '/^[ \t]*export EDITOR=/{h;s/=.*/=nano/};${x;/^$/{s//export EDITOR=nano/;H};x}' $HOME/.zshrc
+    fi
+fi
