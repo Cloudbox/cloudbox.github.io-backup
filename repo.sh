@@ -54,6 +54,7 @@ for i in "$CLOUDBOX_PATH"/defaults/*.default; do
         cp -n "${i}" "$CLOUDBOX_PATH/$(basename "${i%.*}")"
     fi
 done
+shopt -u nullglob
 
 ## Set nano as default editor
 export EDITOR=nano
