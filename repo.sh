@@ -27,8 +27,7 @@ if [ -d "$CLOUDBOX_PATH" ]; then
         git fetch
         git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
         git clean -df
-        git submodule init
-        git submodule update
+        git submodule update --init --recursive
     else
         cd "$CLOUDBOX_PATH"
         git init
@@ -37,14 +36,12 @@ if [ -d "$CLOUDBOX_PATH" ]; then
         git branch master origin/master
         git checkout -f master
         git clean -df
-        git submodule init
-        git submodule update
+        git submodule update --init --recursive
     fi
 else
-    git clone --recursive "$CLOUDBOX_REPO" "$CLOUDBOX_PATH"
+    git clone "$CLOUDBOX_REPO" "$CLOUDBOX_PATH"
     cd "$CLOUDBOX_PATH"
-    git submodule init
-    git submodule update
+    git submodule update --init --recursive
 fi
 
 ## Copy settings and config files into Cloudbox folder
