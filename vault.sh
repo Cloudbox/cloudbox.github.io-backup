@@ -11,8 +11,8 @@
 #################################################################################
 # Usage:                                                                        #
 # ======                                                                        #
-# curl -s https://cloudbox.works/vault.sh | bash 'USER' 'PASS' 'PATH'           #
-# wget -qO- https://cloudbox.works/vault.sh | bash 'USER' 'PASS' 'PATH'         #
+# curl -s https://cloudbox.works/vault.sh | bash -s 'USER' 'PASS' 'PATH'        #
+# wget -qO- https://cloudbox.works/vault.sh | bash -s 'USER' 'PASS' 'PATH'      #
 #################################################################################
 
 # vars
@@ -29,10 +29,15 @@ PASS=$2
 DIR=$3
 
 # validate inputs
-if [ -z "$USER" ] || [ -z "$PASS" ] || [ -z "$DIR" ]
+if [ -z "$USER" ] || [ -z "$PASS" ]
 then
-      echo "You must provide the user, pass & directory as arguments"
+      echo "You must provide the user & pass as arguments"
       exit 1
+fi
+
+if [ -z "$DIR" ]
+then
+    DIR="$HOME/cloudbox"
 fi
 
 # SHA1 username
