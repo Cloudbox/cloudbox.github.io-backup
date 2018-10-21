@@ -25,11 +25,6 @@ nc="\e[0m"
 done="[ ${green}DONE${nc} ]"
 fail="[ ${red}FAIL${nc} ]"
 
-# Regular color(s)
-NORMAL="\033[0;39m"
-GREEN="\033[32m"
-
-
 # Print banner
 if [ -x "$(command -v toilet)" ]; then
     echo ""
