@@ -38,6 +38,7 @@ apt-get update
 
 ## Install Dependencies
 apt-get install -y --reinstall \
+    nano \
     git \
     build-essential \
     libssl-dev \
