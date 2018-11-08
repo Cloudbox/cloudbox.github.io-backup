@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Cloudbox: Options in 'adv_settings.yml'</title>
+	<style>
+	@charset "UTF-8";@import 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.2.0/katex.min.css';@import '../css/settings.css';
+	</style>
+</head>
+<body id="preview">
+	<center>
+		<h1>Cloudbox: Options in 'adv_settings.yml'</h1>
+	</center><br>
+	<br>
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th>Parameter</th>
+				<th>Sub-Parameter</th>
+				<th>Definition</th>
+				<th>Required</th>
+				<th>Choices</th>
+				<th>Default</th>
+				<th style="width:30%">Notes</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><code>install</code></td>
+				<td></td>
+				<td>Cloudbox installer options.</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><code>auto_restart</code></td>
+				<td>Auto restart system when needed.</td>
+        <td>yes</td>
+        <td><code>yes</code></td>
+        <td><code>yes</code><br /><code>no</code><br /></td>
+				<td>Used by the 'Kernel Updater' role</td>
+			</tr>
+			<tr>
+				<td><code>kernel</code></td>
+				<td></td>
+				<td>Kernel related options.</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><code>version</code></td>
+				<td>The Ubuntu kernel version the 'Kernel Updater' installs.</td>
+				<td>yes</td>
+				<td><code>default</code><br>
+				version (e.g. <code>"4.10"</code>)</td>
+				<td><code>default</code></td>
+				<td>
+		     The <code>default</code> tag installs the kernel version <code>4.18.6</code> (the most recent and stable version).
+				<br><br>A custom preferred kernel version can be specified, but it needs to be in quotes or else trailing zeroes in single dot versions will drop off (e.g. <code>4.10</code> will become <code>4.1</code>).
+				</td>
+			</tr>
+			<tr>
+				<td><code>plex</code></td>
+        <td></td>
+        <td>Advanced Plex options.</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><code>open_port</code></td>
+				<td>Expose port <code>32400</code> to the outside.</td>
+        <td></td>
+        <td><code>yes</code><br /><code>no</code><br /></td>
+        <td><code>no</code></td>
+				<td>Can help with double NAT issues.</td>
+			</tr>
+      <tr>
+				<td></td>
+				<td><code>force_auto_adjust_quality</code></td>
+				<td>Forces Plex clients to use automatic quality for media unless the quality is set higher than the quality of the video.</td>
+        <td></td>
+        <td><code>yes</code><br /><code>no</code><br /></td>
+        <td><code>no</code></td>
+        <td></td>
+			</tr>
+      <tr>
+				<td></td>
+				<td><code>force_high_output_bitrates</code></td>
+				<td>Forces Plex client's transcode quality to upscale but can cause high bandwidth usage.</td>
+        <td></td>
+        <td><code>yes</code><br /><code>no</code><br /></td>
+        <td><code>no</code></td>
+        <td></td>
+			</tr>
+      <tr>
+				<td></td>
+				<td><code>db_cache_size</code></td>
+				<td>Set DB cache size.</td>
+        <td></td>
+        <td><code>default</code><br>
+				number (e.g. <code>"10000"</code>)</td>
+				<td><code>default</code></td>
+        <td>
+		     The <code>default</code> tag sets the DB cache size to <code>2000</code> (default setting as per Plex).
+				</td>
+		</tbody>
+	</table>
+</body>
+</html>
