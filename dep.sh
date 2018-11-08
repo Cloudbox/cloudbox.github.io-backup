@@ -11,20 +11,23 @@
 #################################################################################
 # Usage:                                                                        #
 # ======                                                                        #
-# Ansible version 2.5.8:                                                        #
+# Ansible version: default                                                      #
 # curl -s https://cloudbox.works/dep.sh | sudo sh                               #
 # wget -qO- https://cloudbox.works/dep.sh | sudo sh                             #
 #                                                                               #
-# Ansible version specified:                                                    #
+# Ansible version: custom                                                       #
 # curl -s https://cloudbox.works/dep.sh | sudo sh -s 2.5.1                      #
 # wget -qO- https://cloudbox.works/dep.sh | sudo sh -s 2.5.1                    #
 #################################################################################
 
 ## Disable IPv6
 if [ -f /etc/sysctl.d/99-sysctl.conf ]; then
-    grep -q -F 'net.ipv6.conf.all.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
-    grep -q -F 'net.ipv6.conf.default.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || echo 'net.ipv6.conf.default.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
-    grep -q -F 'net.ipv6.conf.lo.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || echo 'net.ipv6.conf.lo.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
+    grep -q -F 'net.ipv6.conf.all.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || \
+        echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
+    grep -q -F 'net.ipv6.conf.default.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || \
+        echo 'net.ipv6.conf.default.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
+    grep -q -F 'net.ipv6.conf.lo.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || \
+        echo 'net.ipv6.conf.lo.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
     sysctl -p
 fi
 
