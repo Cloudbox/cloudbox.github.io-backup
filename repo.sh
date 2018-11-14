@@ -24,9 +24,9 @@ CLOUDBOX_REPO="https://github.com/Cloudbox/Cloudbox.git"
 if [ -d "$CLOUDBOX_PATH" ]; then
     if [ -d "$CLOUDBOX_PATH/.git" ]; then
         cd "$CLOUDBOX_PATH"
-        git fetch
-        git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
         git clean -df
+        git pull
+        git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
         git submodule update --init --recursive
     else
         cd "$CLOUDBOX_PATH"
@@ -36,6 +36,8 @@ if [ -d "$CLOUDBOX_PATH" ]; then
         git branch master origin/master
         git checkout -f master
         git clean -df
+        git pull
+        git reset --hard origin/master
         git submodule update --init --recursive
     fi
 else
