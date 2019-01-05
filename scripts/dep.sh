@@ -20,6 +20,17 @@
 # wget -qO- https://cloudbox.works/dep.sh | sudo sh -s 2.5.1                    #
 #################################################################################
 
+## Appveyor
+if [ "$SUDO_USER" = "appveyor" ]; then
+    rm /etc/apt/sources.list.d/*
+    rm /etc/apt/sources.list
+    curl https://raw.githubusercontent.com/Cloudbox/cloudbox.github.io/develop/scripts/apt-sources/xenial.txt | tee /etc/apt/sources.list
+    apt-get update
+fi
+
+## Environmental Variables
+export DEBIAN_FRONTEND=noninteractive
+
 ## Disable IPv6
 if [ -f /etc/sysctl.d/99-sysctl.conf ]; then
     grep -q -F 'net.ipv6.conf.all.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || \
