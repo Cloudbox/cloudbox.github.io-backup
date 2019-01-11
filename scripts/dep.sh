@@ -12,19 +12,19 @@
 # Usage:                                                                        #
 # ======                                                                        #
 # Ansible version: default                                                      #
-# curl -s https://cloudbox.works/dep.sh | sudo sh                               #
-# wget -qO- https://cloudbox.works/dep.sh | sudo sh                             #
+# curl -s https://cloudbox.works/scripts/dep.sh | sudo sh                       #
+# wget -qO- https://cloudbox.works/scripts/dep.sh | sudo sh                     #
 #                                                                               #
 # Ansible version: custom                                                       #
-# curl -s https://cloudbox.works/dep.sh | sudo sh -s 2.5.1                      #
-# wget -qO- https://cloudbox.works/dep.sh | sudo sh -s 2.5.1                    #
+# curl -s https://cloudbox.works/scripts/dep.sh | sudo sh -s <version>          #
+# wget -qO- https://cloudbox.works/scripts/dep.sh | sudo sh -s <version>        #
 #################################################################################
 
 ## Appveyor
 if [ "$SUDO_USER" = "appveyor" ]; then
     rm /etc/apt/sources.list.d/*
     rm /etc/apt/sources.list
-    curl https://raw.githubusercontent.com/Cloudbox/cloudbox.github.io/develop/scripts/apt-sources/xenial.txt | tee /etc/apt/sources.list
+    curl https://cloudbox.works/scripts/apt-sources/xenial.txt | tee /etc/apt/sources.list
     apt-get update
 fi
 

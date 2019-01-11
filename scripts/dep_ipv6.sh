@@ -11,14 +11,17 @@
 #################################################################################
 # Usage:                                                                        #
 # ======                                                                        #
-# Ansible version 2.5.8:                                                        #
-# curl -s https://cloudbox.works/dep_ipv6.sh | sudo sh                          #
-# wget -qO- https://cloudbox.works/dep_ipv6.sh | sudo sh                        #
+# Ansible version: default                                                      #
+# curl -s https://cloudbox.works/scripts/dep_ipv6.sh | sudo sh                  #
+# wget -qO- https://cloudbox.works/scripts/dep_ipv6.sh | sudo sh                #
 #                                                                               #
-# Ansible version specified:                                                    #
-# curl -s https://cloudbox.works/dep_ipv6.sh | sudo sh -s 2.5.1                 #
-# wget -qO- https://cloudbox.works/dep_ipv6.sh | sudo sh -s 2.5.1               #
+# Ansible version: custom                                                       #
+# curl -s https://cloudbox.works/scripts/dep_ipv6.sh | sudo sh -s <version>     #
+# wget -qO- https://cloudbox.works/scripts/dep_ipv6.sh | sudo sh -s <version>   #
 #################################################################################
+
+## Environmental Variables
+export DEBIAN_FRONTEND=noninteractive
 
 ## Remove IPv6 entries from systctl
 sed -i -e '/^net.ipv6.conf.all.disable_ipv6/d' /etc/sysctl.conf
