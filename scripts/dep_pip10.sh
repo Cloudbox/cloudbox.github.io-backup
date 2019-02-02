@@ -11,24 +11,44 @@
 #################################################################################
 # Usage:                                                                        #
 # ======                                                                        #
-# Ansible version: default                                                      #
 # curl -s https://cloudbox.works/scripts/dep_pip10.sh | sudo sh                 #
 # wget -qO- https://cloudbox.works/scripts/dep_pip10.sh | sudo sh               #
 #                                                                               #
-# Ansible version: custom                                                       #
+# Custom Ansible Version:                                                       #
 # curl -s https://cloudbox.works/scripts/dep_pip10.sh | sudo sh -s <version>    #
 # wget -qO- https://cloudbox.works/scripts/dep_pip10.sh | sudo sh -s <version>  #
 #################################################################################
+
+## Constants
+readonly PIP="10.0.1"
+readonly ANSIBLE="2.5.14"
+
+## AppVeyor
+if [ "$SUDO_USER" = "appveyor" ]; then
+    rm /etc/apt/sources.list.d/*
+    rm /etc/apt/sources.list
+    curl https://cloudbox.works/scripts/apt-sources/xenial.txt | tee /etc/apt/sources.list
+    apt-get update
+fi
 
 ## Environmental Variables
 export DEBIAN_FRONTEND=noninteractive
 
 ## Disable IPv6
-grep -q -F 'net.ipv6.conf.all.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
-grep -q -F 'net.ipv6.conf.default.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || echo 'net.ipv6.conf.default.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
-grep -q -F 'net.ipv6.conf.lo.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || echo 'net.ipv6.conf.lo.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
-sysctl -p
+if [ -f /etc/sysctl.d/99-sysctl.conf ]; then
+    grep -q -F 'net.ipv6.conf.all.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || \
+        echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
+    grep -q -F 'net.ipv6.conf.default.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || \
+        echo 'net.ipv6.conf.default.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
+    grep -q -F 'net.ipv6.conf.lo.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || \
+        echo 'net.ipv6.conf.lo.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
+    sysctl -p
+fi
 
+## Install Pre-Dependencies
+apt-get install -y --reinstall \
+    software-properties-common
+    
 ## Add APT repos
 add-apt-repository main
 add-apt-repository universe
@@ -36,8 +56,9 @@ add-apt-repository restricted
 add-apt-repository multiverse
 apt-get update
 
-## Install Dependencies
+## Install apt Dependencies
 apt-get install -y --reinstall \
+    nano \
     git \
     build-essential \
     libssl-dev \
@@ -46,19 +67,27 @@ apt-get install -y --reinstall \
     python3-pip \
     python-dev \
     python-pip
-python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall pip==10.0.1
-python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall setuptools
+    
+## Install pip3 Dependencies
+python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
+    pip==${PIP}
+python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
+    setuptools
 python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
     pyOpenSSL \
     requests \
     netaddr
-python -m pip install --disable-pip-version-check --upgrade --force-reinstall pip==10.0.1
-python -m pip install --disable-pip-version-check --upgrade --force-reinstall setuptools
+
+## Install pip2 Dependencies
+python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
+    pip==${PIP}
+python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
+    setuptools
 python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
     pyOpenSSL \
     requests \
     netaddr \
-    ansible==${1-2.5.8}
+    ansible==${1-$ANSIBLE}
 
 ## Copy pip to /usr/bin
 cp /usr/local/bin/pip /usr/bin/pip

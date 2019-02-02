@@ -11,16 +11,19 @@
 #################################################################################
 # Usage:                                                                        #
 # ======                                                                        #
-# Ansible version: default                                                      #
 # curl -s https://cloudbox.works/scripts/dep.sh | sudo sh                       #
 # wget -qO- https://cloudbox.works/scripts/dep.sh | sudo sh                     #
 #                                                                               #
-# Ansible version: custom                                                       #
+# Custom Ansible Version:                                                       #
 # curl -s https://cloudbox.works/scripts/dep.sh | sudo sh -s <version>          #
 # wget -qO- https://cloudbox.works/scripts/dep.sh | sudo sh -s <version>        #
 #################################################################################
 
-## Appveyor
+## Constants
+readonly PIP="9.0.3"
+readonly ANSIBLE="2.5.14"
+
+## AppVeyor
 if [ "$SUDO_USER" = "appveyor" ]; then
     rm /etc/apt/sources.list.d/*
     rm /etc/apt/sources.list
@@ -46,14 +49,14 @@ fi
 apt-get install -y --reinstall \
     software-properties-common
 
-## Add APT repos
+## Add apt repos
 add-apt-repository main
 add-apt-repository universe
 add-apt-repository restricted
 add-apt-repository multiverse
 apt-get update
 
-## Install APT Dependencies
+## Install apt Dependencies
 apt-get install -y --reinstall \
     nano \
     git \
@@ -65,9 +68,9 @@ apt-get install -y --reinstall \
     python-dev \
     python-pip
 
-## Install PIP3 Dependencies
+## Install pip3 Dependencies
 python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
-    pip==9.0.3
+    pip==${PIP}
 python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
     setuptools
 python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
@@ -75,16 +78,16 @@ python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
     requests \
     netaddr
 
-## Install PIP2 Dependencies
+## Install pip2 Dependencies
 python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
-    pip==9.0.3
+    pip==${PIP}
 python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
     setuptools
 python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
     pyOpenSSL \
     requests \
     netaddr \
-    ansible==${1-2.5.8}
+    ansible==${1-$ANSIBLE}
 
 ## Copy pip to /usr/bin
 cp /usr/local/bin/pip /usr/bin/pip
