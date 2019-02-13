@@ -133,7 +133,7 @@ do
         :
         # move file
         printf '%-20.20s' "$file"
-        MOVE_RESULT=$(mv --backup=numbered $folder/$file $DIR/$file 2>&1)
+        MOVE_RESULT=$(mv $folder/$file $DIR/$file 2>&1)
         # was the decrypted file moved successfully?
         if [ -z "$MOVE_RESULT" ]
         then
