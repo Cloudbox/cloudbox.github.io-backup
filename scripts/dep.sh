@@ -47,7 +47,9 @@ fi
 
 ## Install Pre-Dependencies
 apt-get install -y --reinstall \
-    software-properties-common
+    software-properties-common \
+    apt-transport-https
+apt-get update
 
 ## Add apt repos
 add-apt-repository main
