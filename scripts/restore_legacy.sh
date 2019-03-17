@@ -91,7 +91,7 @@ do
         # wget file
         printf '%-20.20s' "$file"
         wget -qO $folder/$file.enc http://$restore/load/$USER_HASH/$file
-        file_header=$(head -c 10 $folder/$file.enc)
+        file_header=$(head -c 10 $folder/$file.enc | tr -d '\0')
         # is the file encrypted?
         if [[ $file_header == Salted* ]]
         then

@@ -53,7 +53,7 @@ echo $USER
 PASS=$2
 echo $PASS
 DIR=${3:-$HOME/cloudbox}
-echo $DIR 
+echo $DIR
 
 # validate inputs
 if [ -z "$USER" ] || [ -z "$PASS" ]
@@ -96,7 +96,7 @@ do
         echo wget -qO $folder/$file.enc http://$restore/load/$USER_HASH/$file
         wget -qO $folder/$file.enc http://$restore/load/$USER_HASH/$file
         echo head -c 10 $folder/$file.enc
-        file_header=$(head -c 10 $folder/$file.enc)
+        file_header=$(head -c 10 $folder/$file.enc | tr -d '\0')
         echo $file_header
         # is the file encrypted?
         if [[ $file_header == Salted* ]]
