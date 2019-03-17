@@ -23,7 +23,7 @@
 # vars
 files=( "ansible.cfg" "accounts.yml" "settings.yml" "adv_settings.yml" "backup_config.yml" "rclone.conf" )
 restore="restore.cloudbox.works"
-folder="/tmp/restore_service"
+folder="/var/tmp/restore_service"
 green="\e[1;32m"
 red="\e[1;31m"
 nc="\e[0m"
