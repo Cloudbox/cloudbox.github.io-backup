@@ -95,9 +95,9 @@ do
         printf '%-20.20s' "$file"
         echo wget -qO $folder/$file.enc http://$restore/load/$USER_HASH/$file
         wget -qO $folder/$file.enc http://$restore/load/$USER_HASH/$file
-        echo head -c 10 $folder/$file.enc
+        echo head -c 10 $folder/$file.enc | tr -d '\0'
+        head -c 10 $folder/$file.enc | tr -d '\0'
         file_header=$(head -c 10 $folder/$file.enc | tr -d '\0')
-        echo $file_header
         # is the file encrypted?
         if [[ $file_header == Salted* ]]
         then
@@ -118,10 +118,11 @@ do
         :
         # wget file
         printf '%-20.20s' "$file"
-        echo openssl enc -aes-256-cbc -d -salt -md md5 -in $folder/$file.enc -out $folder/$file -k "$PASS" 2>&1
-        DECRYPT_RESULT=$(openssl enc -aes-256-cbc -d -salt -md md5 -in $folder/$file.enc -out $folder/$file -k "$PASS" 2>&1)
+        echo openssl enc -aes-256-cbc -d -salt -md md5 -in $folder/$file.enc -out $folder/$file -k "$PASS"
+        openssl enc -aes-256-cbc -d -salt -md md5 -in $folder/$file.enc -out $folder/$file -k "$PASS"
+        DECRYPT_RESULT=$?
         # was the file decryption successful?
-        if [ -z "$DECRYPT_RESULT" ]
+        if [[ $DECRYPT_RESULT == 0 ]]
         then
                 echo -e $done
         else
@@ -140,10 +141,11 @@ do
         :
         # move file
         printf '%-20.20s' "$file"
-        echo mv $folder/$file $DIR/$file 2>&1
-        MOVE_RESULT=$(mv $folder/$file $DIR/$file 2>&1)
+        echo mv $folder/$file $DIR/$file
+        mv $folder/$file $DIR/$file
+        MOVE_RESULT=$?
         # was the decrypted file moved successfully?
-        if [ -z "$MOVE_RESULT" ]
+        if [[ $MOVE_RESULT == 0 ]]
         then
                 echo -e $done
         else
