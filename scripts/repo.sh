@@ -25,8 +25,9 @@ if [ -d "$CLOUDBOX_PATH" ]; then
     if [ -d "$CLOUDBOX_PATH/.git" ]; then
         cd "$CLOUDBOX_PATH"
         git clean -df
-        git pull
         git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
+        git fetch
+        git pull
         git submodule update --init --recursive
     else
         cd "$CLOUDBOX_PATH"
@@ -34,10 +35,10 @@ if [ -d "$CLOUDBOX_PATH" ]; then
         git remote add origin "$CLOUDBOX_REPO"
         git fetch
         git branch master origin/master
+        git reset --hard origin/master
         git checkout -f master
         git clean -df
         git pull
-        git reset --hard origin/master
         git submodule update --init --recursive
     fi
 else
