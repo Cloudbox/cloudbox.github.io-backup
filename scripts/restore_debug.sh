@@ -118,8 +118,8 @@ do
         :
         # wget file
         printf '%-20.20s' "$file"
-        echo openssl enc -aes-256-cbc -d -salt -md md5 -nopad -in $folder/$file.enc -out $folder/$file -k "$PASS"
-        openssl enc -aes-256-cbc -d -salt -md md5 -nopad -in $folder/$file.enc -out $folder/$file -k "$PASS"
+        echo openssl enc -aes-256-cbc -d -salt -md md5 -in $folder/$file.enc -out $folder/$file -k "$PASS"
+        openssl enc -aes-256-cbc -d -salt -md md5 -in $folder/$file.enc -out $folder/$file -k "$PASS"
         DECRYPT_RESULT=$?
         # was the file decryption successful?
         if [[ $DECRYPT_RESULT == 0 ]]
