@@ -82,6 +82,7 @@ python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
     pyOpenSSL \
     requests \
     netaddr \
+    jmespath \
     ansible==${1-$ANSIBLE}
 
 ## Copy pip to /usr/bin

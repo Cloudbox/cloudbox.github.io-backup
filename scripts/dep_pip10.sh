@@ -48,7 +48,7 @@ fi
 ## Install Pre-Dependencies
 apt-get install -y --reinstall \
     software-properties-common
-    
+
 ## Add APT repos
 add-apt-repository main
 add-apt-repository universe
@@ -67,7 +67,7 @@ apt-get install -y --reinstall \
     python3-pip \
     python-dev \
     python-pip
-    
+
 ## Install pip3 Dependencies
 python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
     pip==${PIP}
@@ -87,6 +87,7 @@ python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
     pyOpenSSL \
     requests \
     netaddr \
+    jmespath \
     ansible==${1-$ANSIBLE}
 
 ## Copy pip to /usr/bin
