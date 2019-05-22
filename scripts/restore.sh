@@ -21,7 +21,7 @@
 ######################################################################################
 
 # vars
-files=( "ansible.cfg" "accounts.yml" "settings.yml" "adv_settings.yml" "backup_config.yml" "rclone.conf" )
+files=( "ansible_vault" "ansible.cfg" "accounts.yml" "settings.yml" "adv_settings.yml" "backup_config.yml" "rclone.conf")
 restore="restore.cloudbox.works"
 folder="$HOME/.restore_service_tmp"
 green="\e[1;32m"
@@ -133,7 +133,12 @@ do
         :
         # move file
         printf '%-20.20s' "$file"
-        MOVE_RESULT=$(mv $folder/$file $DIR/$file 2>&1)
+        if [ "$file" ==  "ansible_vault" ]
+        then
+                MOVE_RESULT=$(mv $folder/$file $HOME/.$file 2>&1)
+        else
+                MOVE_RESULT=$(mv $folder/$file $DIR/$file 2>&1)
+        fi
         # was the decrypted file moved successfully?
         if [ -z "$MOVE_RESULT" ]
         then
