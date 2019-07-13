@@ -29,6 +29,7 @@ red="\e[1;31m"
 nc="\e[0m"
 done="[ ${green}DONE${nc} ]"
 fail="[ ${red}FAIL${nc} ]"
+ignore="[ ${red}IGNORE${nc} ]"
 
 # Print banner
 
@@ -89,8 +90,7 @@ for file in "${files[@]}"
 do
         :
         # wget file
-        if [ "$file" ==  "ansible_vault" ]
-        then
+        if [ "$file" ==  "ansible_vault" ]; then
                 printf '%-20.20s' ."$file"
         else
                 printf '%-20.20s' "$file"
@@ -98,9 +98,10 @@ do
         wget -qO $folder/$file.enc http://$restore/load/$USER_HASH/$file
         file_header=$(head -c 10 $folder/$file.enc | tr -d '\0')
         # is the file encrypted?
-        if [[ $file_header == Salted* ]]
-        then
+        if [[ $file_header == Salted* ]]; then
                 echo -e $done
+        elif [ "$file" ==  "ansible_vault" ]; then
+                echo -e $ignore
         else
                 echo -e $fail
                 exit 1
@@ -116,17 +117,17 @@ for file in "${files[@]}"
 do
         :
         # wget file
-        if [ "$file" ==  "ansible_vault" ]
-        then
+        if [ "$file" ==  "ansible_vault" ]; then
                 printf '%-20.20s' ."$file"
         else
                 printf '%-20.20s' "$file"
         fi
         DECRYPT_RESULT=$(openssl enc -aes-256-cbc -d -salt -md md5 -in $folder/$file.enc -out $folder/$file -k "$PASS" 2>&1)
         # was the file decryption successful?
-        if [ -z "$DECRYPT_RESULT" ]
-        then
+        if [ -z "$DECRYPT_RESULT" ]; then
                 echo -e $done
+        elif [ "$file" ==  "ansible_vault" ]; then
+                echo -e $ignore
         else
                 echo -e $fail
                 exit 1
@@ -143,8 +144,7 @@ do
         :
         # move file
 
-        if [ "$file" ==  "ansible_vault" ]
-        then
+        if [ "$file" ==  "ansible_vault" ]; then
                 printf '%-20.20s' ."$file"
                 MOVE_RESULT=$(mv $folder/$file $HOME/.$file 2>&1)
         else
@@ -152,9 +152,10 @@ do
                 MOVE_RESULT=$(mv $folder/$file $DIR/$file 2>&1)
         fi
         # was the decrypted file moved successfully?
-        if [ -z "$MOVE_RESULT" ]
-        then
+        if [ -z "$MOVE_RESULT" ]; then
                 echo -e $done
+        elif [ "$file" ==  "ansible_vault" ]; then
+                echo -e $ignore
         else
                 echo -e $fail
                 exit 1
