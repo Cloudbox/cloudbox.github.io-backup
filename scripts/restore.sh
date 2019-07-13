@@ -146,19 +146,22 @@ do
 
         if [ "$file" ==  "ansible_vault" ]; then
                 printf '%-20.20s' ."$file"
-                MOVE_RESULT=$(mv $folder/$file $HOME/.$file 2>&1)
+                if [ -f "$folder/$file" ]; then
+                        mv $folder/$file $HOME/.$file 2>&1
+                        echo -e $done
+                else
+                        echo -e $ignore
+                fi
         else
                 printf '%-20.20s' "$file"
                 MOVE_RESULT=$(mv $folder/$file $DIR/$file 2>&1)
-        fi
-        # was the decrypted file moved successfully?
-        if [ -z "$MOVE_RESULT" ]; then
-                echo -e $done
-        elif [ "$file" ==  "ansible_vault" ]; then
-                echo -e $ignore
-        else
-                echo -e $fail
-                exit 1
+                # was the decrypted file moved successfully?
+                if [ -z "$MOVE_RESULT" ]; then
+                        echo -e $done
+                else
+                        echo -e $fail
+                        exit 1
+                fi
         fi
 done
 
