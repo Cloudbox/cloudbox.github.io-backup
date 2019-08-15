@@ -47,6 +47,19 @@ $green│ Title:         Cloudbox Restore Service: Restore Script             �
 $green└─────────────────────────────────────────────────────────────────────┘
 $nc"
 
+## Functions
+
+# validate url
+# https://gist.github.com/hrwgc/7455343
+function validate_url(){
+  if [[ `wget -S --spider $1 2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+## Main
 
 # inputs
 USER=$1
@@ -95,16 +108,19 @@ do
         else
                 printf '%-20.20s' "$file"
         fi
-        wget -qO $folder/$file.enc http://$restore/load/$USER_HASH/$file
-        file_header=$(head -c 10 $folder/$file.enc | tr -d '\0')
-        # is the file encrypted?
-        if [[ $file_header == Salted* ]]; then
-                echo -e $done
-        elif [ "$file" ==  "ansible_vault" ]; then
-                echo -e $ignore
+        URL=http://$restore/load/$USER_HASH/$file
+        if validate_url $URL; then
+            wget -qO $folder/$file.enc $URL
+            # is the file encrypted?
+            file_header=$(head -c 10 $folder/$file.enc | tr -d '\0')
+            if [[ $file_header == Salted* ]]; then
+                    echo -e $done
+            else
+                    echo -e $fail
+                    exit 1
+            fi
         else
-                echo -e $fail
-                exit 1
+          echo -e $ignore
         fi
 done
 
@@ -113,20 +129,22 @@ echo ''
 # Decrypt files
 echo 'Decrypting fetched files...'
 echo ''
-for file in "${files[@]}"
+for file in $folder/*
 do
         :
+        filename="$(basename -- $file .enc)"
         # wget file
-        if [ "$file" ==  "ansible_vault" ]; then
-                printf '%-20.20s' ."$file"
+        if [ "$filename" ==  "ansible_vault" ]; then
+                printf '%-20.20s' ."$filename"
         else
-                printf '%-20.20s' "$file"
+                printf '%-20.20s' "$filename"
         fi
-        DECRYPT_RESULT=$(openssl enc -aes-256-cbc -d -salt -md md5 -in $folder/$file.enc -out $folder/$file -k "$PASS" 2>&1)
+        DECRYPT_RESULT=$(openssl enc -aes-256-cbc -d -salt -md md5 -in $folder/${filename}.enc -out $folder/$filename -k "$PASS" >/dev/null 2>&1)
         # was the file decryption successful?
         if [ -z "$DECRYPT_RESULT" ]; then
                 echo -e $done
-        elif [ "$file" ==  "ansible_vault" ]; then
+                rm $folder/${filename}.enc
+        elif [ "$filename" ==  "ansible_vault" ]; then
                 echo -e $ignore
         else
                 echo -e $fail
@@ -139,22 +157,22 @@ echo ''
 # Move decrypted files
 echo 'Moving decrypted files...'
 echo ''
-for file in "${files[@]}"
+for file in $folder/*
 do
         :
         # move file
-
-        if [ "$file" ==  "ansible_vault" ]; then
-                printf '%-20.20s' ."$file"
-                if [ -f "$folder/$file" ]; then
-                        mv $folder/$file $HOME/.$file 2>&1
+        filename="$(basename -- $file)"
+        if [ "$filename" ==  "ansible_vault" ]; then
+                printf '%-20.20s' ."$filename"
+                if [ -f "$folder/$filename" ]; then
+                        mv $folder/$filename $HOME/.$filename 2>&1
                         echo -e $done
                 else
                         echo -e $ignore
                 fi
         else
-                printf '%-20.20s' "$file"
-                MOVE_RESULT=$(mv $folder/$file $DIR/$file 2>&1)
+                printf '%-20.20s' "$filename"
+                MOVE_RESULT=$(mv $folder/$filename $DIR/$filename 2>&1)
                 # was the decrypted file moved successfully?
                 if [ -z "$MOVE_RESULT" ]; then
                         echo -e $done
