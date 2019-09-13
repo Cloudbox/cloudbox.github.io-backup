@@ -24,21 +24,18 @@ CLOUDBOX_REPO="https://github.com/Cloudbox/Cloudbox.git"
 if [ -d "$CLOUDBOX_PATH" ]; then
     if [ -d "$CLOUDBOX_PATH/.git" ]; then
         cd "$CLOUDBOX_PATH"
-        git clean -df
-        git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
-        git fetch
-        git pull
+        git fetch --all --prune
+        git checkout master
+        git reset --hard origin/master
         git submodule update --init --recursive
     else
         cd "$CLOUDBOX_PATH"
+        rm -rf library/
         git init
         git remote add origin "$CLOUDBOX_REPO"
-        git fetch
+        git fetch --all --prune
         git branch master origin/master
         git reset --hard origin/master
-        git checkout -f master
-        git clean -df
-        git pull
         git submodule update --init --recursive
     fi
 else
